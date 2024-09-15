@@ -8,8 +8,8 @@ import { getTime } from './helpers'
 
 function App() {
   const [data, setData] = useState()
-  const [city, setCity] = useState<string>('')
-  const [titleCity, setTitleCity] = useState<string>()
+  const [city, setCity] = useState<string | undefined>('')
+  const [titleCity, setTitleCity] = useState<string | undefined>()
   const [todayForecast, setTodayForecast] = useState<{date: string, weather: string, temp: string, icon: string, humidity: string, wind: string, sunrise: string, sunset: string}>({ date: '', weather: '', temp: '', icon: '', humidity: '', wind: '', sunrise: '', sunset:'' })
   const [forecast, setForecast] = useState<{temp: number | null, icon: string, date: number | null}[]>([{temp: null, icon: '', date: null}])
 
@@ -76,7 +76,7 @@ function App() {
 
   return (
     <div>
-      {/* <CityInput onKeyHandler={onKeyHandler} setCity={setCity} city={city} /> */}
+      <CityInput onKeyHandler={onKeyHandler} setCity={setCity} city={city} />
       {/* {!titleCity ?
         <h1 className='title'>Weather Forecast</h1> :
         <div className='container'>
