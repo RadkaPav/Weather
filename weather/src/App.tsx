@@ -1,7 +1,7 @@
 import './App.css'
 import CityInput from './components/CityInput'
-// import MainWindow from './components/MainWindow'
-// import WeatherBox from './components/WeatherBox'
+import MainWindow from './components/MainWindow'
+import WeatherBox from './components/WeatherBox'
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { getTime } from './helpers' 
@@ -10,7 +10,7 @@ function App() {
   const [data, setData] = useState()
   const [city, setCity] = useState<string | undefined>('')
   const [titleCity, setTitleCity] = useState<string | undefined>()
-  const [todayForecast, setTodayForecast] = useState<{date: string, weather: string, temp: string, icon: string, humidity: string, wind: string, sunrise: string, sunset: string}>({ date: '', weather: '', temp: '', icon: '', humidity: '', wind: '', sunrise: '', sunset:'' })
+  const [todayForecast, setTodayForecast] = useState<{date: number | null, weather: string, temp: number | null, icon: string, humidity: string, wind: string, sunrise: number | null, sunset: number | null}>({ date: null, weather: '', temp: null, icon: '', humidity: '', wind: '', sunrise: null, sunset: null })
   const [forecast, setForecast] = useState<{temp: number | null, icon: string, date: number | null}[]>([{temp: null, icon: '', date: null}])
 
   let url: string = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=6557810176c36fac5f0db536711a6c52`
@@ -77,13 +77,14 @@ function App() {
   return (
     <div>
       <CityInput onKeyHandler={onKeyHandler} setCity={setCity} city={city} />
-      {/* {!titleCity ?
+      {!titleCity ?
         <h1 className='title'>Weather Forecast</h1> :
         <div className='container'>
-          <MainWindow titleCity={titleCity} todayForecast={todayForecast} data={data} />
-          <WeatherBox forecast={forecast} />
+          <MainWindow titleCity={titleCity} todayForecast={todayForecast} />
+          {/* <WeatherBox forecast={forecast} /> */}
+          <WeatherBox />
         </div>
-      } */}
+      }
       <Toaster position='bottom-center' reverseOrder={false} />
     </div>
   )

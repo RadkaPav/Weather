@@ -1,0 +1,23 @@
+.cityinput {
+    display: block;
+    width: 250px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 15px;
+    outline: none;
+    margin: 30px auto;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.button {
+    display: block;
+    margin: 10px auto;
+    margin-bottom: 30px;
+    background-color: rgb(17, 81, 140);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: white;
+    font-size: 0.9rem;
+}

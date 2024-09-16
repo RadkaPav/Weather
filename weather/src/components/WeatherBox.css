@@ -1,0 +1,41 @@
+.weather-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.weather-box h4 {
+    text-align: center;
+    /* line-height: 70px; */
+}
+
+.weather-box span {
+    line-height: 70px;
+}
+.weather-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    background-color: rgba(99, 85, 4, 0.3);
+    box-shadow: 0px 0px 10px silver;
+    padding: 40px 20px 20px 20px;
+}
+
+.image-box {
+    height: 50px;
+    margin: 10px;
+}
+
+.text {
+    text-align: center;
+}
+
+@media only screen and (min-width: 640px) {
+    .weather-boxes {
+      height: 500px;
+    }
+}
