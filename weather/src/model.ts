@@ -1,11 +1,22 @@
-
 export interface ForecastData {
-    date: number;
-    temp: number;
-    icon: string;
-    sunrise?: number
-    sunset?: number
-    humidity?: number
-    weather?: string
-    wind?: number
+    city: {
+        sunrise: number
+        sunset: number
+    }
+    list: {
+        dt: number
+        main: {
+            temp: number
+            humidity: number
+        }
+        weather: {
+            main: string
+            icon: string
+            description: string
+        }[]
+        wind: {
+            speed: number
+        }
+    }[]
 }
+
