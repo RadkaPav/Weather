@@ -5,12 +5,13 @@ import WeatherBox from './components/WeatherBox'
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { getTime } from './helpers' 
+import { ForecastData } from './model'
 
 function App() {
-  const [data, setData] = useState()
+  const [data, setData] = useState<ForecastData | null>(null)
   const [city, setCity] = useState<string | undefined>('')
   const [titleCity, setTitleCity] = useState<string | undefined>()
-  const [todayForecast, setTodayForecast] = useState<{date: number | null, weather: string, temp: number | null, icon: string, humidity: string, wind: string, sunrise: number | null, sunset: number | null}>({ date: null, weather: '', temp: null, icon: '', humidity: '', wind: '', sunrise: null, sunset: null })
+  const [todayForecast, setTodayForecast] = useState<ForecastData | undefined>()
   const [forecast, setForecast] = useState<{temp: number | null, icon: string, date: number | null}[]>([{temp: null, icon: '', date: null}])
 
   let url: string = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=6557810176c36fac5f0db536711a6c52`
@@ -41,7 +42,9 @@ function App() {
       })
   }
 
-  const onKeyHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(data)
+  console.log(city)
+  const onKeyHandler = (e: React.FormEvent, city: string | undefined) => {
     e.preventDefault()
     if (!city) {
       toast.error('Please, enter a city')
@@ -52,6 +55,7 @@ function App() {
       toast.error('Please enter a valid city name')
     }
   }
+  console.log(titleCity)
 
   const updateData = (data: any) => {
     let dayIndexes = []
@@ -80,7 +84,7 @@ function App() {
       {!titleCity ?
         <h1 className='title'>Weather Forecast</h1> :
         <div className='container'>
-          <MainWindow titleCity={titleCity} todayForecast={todayForecast} />
+          <MainWindow titleCity={titleCity} todayForecast={todayForecast} data={data}/>
           {/* <WeatherBox forecast={forecast} /> */}
           <WeatherBox />
         </div>
