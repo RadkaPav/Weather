@@ -10,8 +10,9 @@ interface Props {
 }
 const MainWindow = ({ todayForecast, titleCity, data }: Props) => {
   const image = images.filter(oneImage => {
-    if (todayForecast) oneImage.icon === todayForecast.icon
+    return todayForecast ? oneImage.icon === todayForecast.icon : undefined
 })
+
   return (
     <div className='main-window'>
     {

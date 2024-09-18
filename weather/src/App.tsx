@@ -12,7 +12,7 @@ function App() {
   const [city, setCity] = useState<string | undefined>('')
   const [titleCity, setTitleCity] = useState<string | undefined>()
   const [todayForecast, setTodayForecast] = useState<ForecastData | undefined>()
-  const [forecast, setForecast] = useState<{temp: number | null, icon: string, date: number | null}[]>([{temp: null, icon: '', date: null}])
+  const [forecast, setForecast] = useState<ForecastData[] | undefined>()
 
   let url: string = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=6557810176c36fac5f0db536711a6c52`
 
@@ -66,7 +66,7 @@ function App() {
       }
     }
 
-    let forecastArray: {temp: number, icon: string, date: number}[] = []
+    let forecastArray: ForecastData[] | undefined = []
     for (let i = 0; i < 4; i++) {
       let dayForecast = {
         temp: data.list[dayIndexes[i]].main.temp,
@@ -85,8 +85,7 @@ function App() {
         <h1 className='title'>Weather Forecast</h1> :
         <div className='container'>
           <MainWindow titleCity={titleCity} todayForecast={todayForecast} data={data}/>
-          {/* <WeatherBox forecast={forecast} /> */}
-          <WeatherBox />
+          <WeatherBox forecast={forecast} />
         </div>
       }
       <Toaster position='bottom-center' reverseOrder={false} />
