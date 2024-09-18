@@ -2,6 +2,7 @@ export interface ForecastData {
     city: {
         sunrise: number
         sunset: number
+        name: string
     }
     list: {
         dt: number
