@@ -14,7 +14,12 @@ function App() {
 
   const api = () => {
     fetch(url)
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        }
+        throw new Error('Request failed!')
+      }, networkError => console.log(networkError.message))
       .then(data => {
         setForecast(data)
         setCity('')
@@ -42,10 +47,10 @@ function App() {
       <CityInput onKeyHandler={onKeyHandler} setCity={setCity} city={city} />
       {
         !forecast ? <h1 className='title'>Weather Forecast</h1> :
-        <div className='container'>
-          <MainWindow todayForecast={forecast}/>
-          <WeatherBox forecast={forecast} />
-        </div>
+          <div className='container'>
+            <MainWindow todayForecast={forecast} />
+            <WeatherBox forecast={forecast} />
+          </div>
       }
       <Toaster position='bottom-center' reverseOrder={false} />
     </div>

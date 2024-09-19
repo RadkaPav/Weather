@@ -9,7 +9,7 @@ interface Props {
 
 const MainWindow = ({ todayForecast }: Props) => {
   const image = images.filter(oneImage => {
-    return todayForecast ? oneImage.icon === todayForecast.list[0].weather[0].icon : images[0]
+    return todayForecast ? oneImage.icon === todayForecast.list[0].weather[0].icon : images[0].image
   })
 
   return (
