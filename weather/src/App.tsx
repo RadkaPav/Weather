@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='div'>
       <CityInput onKeyHandler={onKeyHandler} setCity={setCity} city={city} />
       {
         !forecast ? <h1 className='title'>Weather Forecast</h1> :
